@@ -1,0 +1,25 @@
+int vibrationPin = D5;
+int led = D6;
+int buzzer = D7;
+
+void setup() {
+  pinMode(vibrationPin, INPUT);
+  pinMode(led, OUTPUT);
+  pinMode(buzzer, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  int vibration = digitalRead(vibrationPin);
+
+  if (vibration == HIGH) {
+    Serial.println("Abnormal Vibration Detected!");
+    digitalWrite(led, HIGH);
+    digitalWrite(buzzer, HIGH);
+  } else {
+    digitalWrite(led, LOW);
+    digitalWrite(buzzer, LOW);
+  }
+
+  delay(500);
+}
